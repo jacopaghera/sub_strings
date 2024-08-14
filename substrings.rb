@@ -1,17 +1,25 @@
 require 'pry-byebug'
 
-dictionary = ["below", "below", "down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+dictionary = ["below", "down","go","going","horn","how","howdy","it","i", "low", "own","part","partner","sit"]
 
-def substrings(word, sub)
+def substrings(input, sub)
   resultword = Hash.new
-  result = 0
+  parolaprecedente = 0
+  in_array = input.split
+  puts in_array
+  in_array.each { |termine|
     sub.each { |parola|
-      if parola == word
-        result += 1
-        resultword[parola] = result
-      end
-    }
+      if termine.include?(parola)
+        if resultword.key?(parola)
+          resultword[parola] += 1
+        else
+          resultword[parola] = 1
+        end
+      
+    end
+  }
+  }
   puts resultword
 end
 
-substrings("below", dictionary)
+substrings("Howdy partner, sit down! How's it going?", dictionary)
